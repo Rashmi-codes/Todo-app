@@ -6,7 +6,7 @@
         <!--Custom css-->
     <link rel="stylesheet" href="todo.css">
     <!--fontawesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="fontawesome-free-6.7.2-web/css/all.min.css">
         <style>
             .done{
                 text-decoration: line-through;
@@ -24,26 +24,55 @@
     <div class="todo_wrapper">
         <h1>Todo List</h1>
         <p>Organize your task and get things done</p>
-        <div class="input-section">
-        
+        <div class="container">
+            <button id="theme_btn">🌙</button>
+
+            <form action="/todos" method="POST" class="input-section">
+                    
+                <input type="text" name="task" id="input" placeholder="Enter Task">
+                <input type="date" name="dueDate"  id="dueDate">
+
+                <select name="priority" id="priority">
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+                <div class="control">
+                    <select name="" id="sort_tasks" placeholder="Sort Tasks">
+                        <option value="HighToLow">High to Low</option>
+                        <option value="LowToHigh">Low to High</option>
+                    </select>
+                </div>
+                <button type="submit" id="button">Add</button>
                 
-            <input type="text" id="input" placeholder="Enter Task">
-            <button type="button" id="button" onclick="addTodo()">Add</button>
-            
-            
-        </div>
-        <div class="input-section">
-            <input type="text" id="search" placeholder="Search Task" >
-            <button type="button" id="button" onclick="searchTodo()">search</button>
-        </div>
-        <div class="filters">
-            <button class="filter-btn active" id="allBtn"><i class="fa-solid fa-list"></i>
-                <span>All</span></button>
-            <button class="filter-btn" id="activeBtn"><i class="fa-regular fa-circle"></i>Active</button>
-            <button class="filter-btn" id="completeBtn"><i class="fa-solid fa-circle-check"></i>Completed</button>
+                
+                
+            </form>
+            <div class="input-section">
+                <input type="text" id="search" placeholder="Search Task" >
+                <button type="button" id="button" onclick="searchTodo()">search</button>
+            </div>
         </div>
 
+        <div class="filters">
+            <button class="filter-btn active" id="allBtn"><i class="fa-solid fa-list"></i>
+                <span>All</span>
+            </button>
+            <button class="filter-btn" id="activeBtn">
+                <i class="fa-regular fa-circle"></i>Active
+            </button>
+            <button class="filter-btn" id="completeBtn">
+                <i class="fa-solid fa-circle-check"></i>Completed
+            </button>
+            <button class="filter-btn" id="clearCompleteBtn">
+                <i class="fa-solid fa-trash"></i>Clear Completed
+            </button>
+
+        </div>
+
+
             <ul id="list"></ul>
+            
             <div class="footer">
                 <h3 class="footer_icon"><i class="fa-solid fa-list"></i> Total : <span  id="count">0</span></h3>
                 <h3 class="footer_icon"><i class="fa-regular fa-circle"></i> Actiive : <span id="active">0</span></h3>
